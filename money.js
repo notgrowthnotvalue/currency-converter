@@ -1,9 +1,9 @@
 import { APIKEY } from "./api-key.js";
 const fromSelect = document.querySelector('[name="from_currency"]');
-// // Made a chanve to the name
+// Made a change to the name
 const toSelect = document.querySelector('[name="to_currency"]');
-const endpoint = "https://api.exchangeratesapi.io/v1/latest";
-const access_key = APIKEY;
+const endpoint = "https://api.apilayer.com/exchangerates_data/latest?apikey=";
+const apikey = APIKEY;
 
 const currencies = {
     USD: 'United States Dollar',
@@ -54,7 +54,7 @@ toSelect.innerHTML = optionsHTML;
 
 
 async function fetchRates(base = "USD") {
-    const res = await fetch(`${endpoint}?base=${base}`);
+    const res = await fetch(`${endpoint}${apikey}&base=${base}`);
     const rates = await res.json();
     console.log(rates);
 }
